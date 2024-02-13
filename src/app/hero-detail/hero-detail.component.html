@@ -1,0 +1,16 @@
+<div *ngIf="hero">
+  <button
+    class="bg-slate-950 text-slate-100 p-1 rounded"
+    type="button"
+    (click)="goBack()"
+  >
+    Return
+  </button>
+  <h2 class="text-3xl">{{ hero.name | uppercase }}</h2>
+  <div>id:{{ hero.id }}</div>
+  <img
+    class="h-96 object-cover w-full rounded-lg"
+    [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension"
+    alt=""
+  />
+</div>
