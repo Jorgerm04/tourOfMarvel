@@ -1,10 +1,10 @@
 <app-hero-search></app-hero-search>
-<div class="mr-4 mt-2 mb-2 ml-4 text-center">
+<div class="mr-4 mt-2 mb-2 ml-4 text-center items-center">
   <h2>Top Heroes</h2>
   <div class="grid grid-cols-4 gap-x-4 gap-y-8 content-center p-6">
     <a
       class="w-full h-[24.3rem] relative"
-      *ngFor="let hero of heroes"
+      *ngFor="let hero of heroes$ | async"
       routerLink="/detail/{{ hero.id }}"
     >
       <img

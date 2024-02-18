@@ -1,18 +1,14 @@
 <div class="flex flex-col relative text-left items-center">
-  <label for="search-box">Hero Search</label>
-  <input
-    class="w-48 outline-none bg-slate-200 p-1 z-20 border-slate-950 focus:border-b-2 duration-75 focus:shadow-md shadow-slate-500"
-    id="search-box"
-    [formControl]="heroName"
-  />
+  <mat-form-field class="example-full-width">
+    <mat-label>Hero Search</mat-label>
+    <input matInput [formControl]="heroName" [matAutocomplete]="auto" />
 
-  <ul
-    class="search-result absolute z-10 top-14 list-none p-0 m-0 bg-slate-200 w-48 shadow-b-md shadow-slate-500 rounded-br rounded-bl cursor-pointer"
-  >
-    <li *ngFor="let hero of heroes$ | async" class="p-1">
-      <a routerLink="/detail/{{ hero.id }}">
-        {{ hero.name }}
-      </a>
-    </li>
-  </ul>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let hero of heroes$ | async">
+        <a routerLink="/detail/{{ hero.id }}">
+          {{ hero.name }}
+        </a>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </div>
