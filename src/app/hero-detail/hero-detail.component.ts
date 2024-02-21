@@ -4,11 +4,12 @@ import { HeroService } from '../services/hero.service';
 import { Hero } from '../models/hero';
 import { Location, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { Subscription, take } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-hero-detail',
   standalone: true,
-  imports: [NgIf,UpperCasePipe,NgFor],
+  imports: [NgIf,UpperCasePipe,NgFor,MatCardModule],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })

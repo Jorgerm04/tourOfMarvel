@@ -1,15 +1,24 @@
-<div class="text-center m-1">
-  <h2>Heroes</h2>
-  <ul class="flex flex-col gap-y-1 text-center items-center">
-    <li
+<div class="text-center mt-[7rem] pb-4">
+  <div class="flex text-left mb-4">
+    <h1 class="text-2xl">CHARACTERS LIST</h1>
+  </div>
+  <div class="flex flex-col gap-y-8 text-center items-center">
+    <mat-card-content
       routerLink="/detail/{{ hero.id }}"
       *ngFor="let hero of heroes$ | async"
-      class="w-72 bg-slate-950 p-1 text-slate-100 rounded text-sm hover:bg-red-700 hover:scale-105 duration-300 cursor-pointer"
+      class="flex flex-row w-96 gap-x-10 bg-slate-950 text-slate-100 rounded text-sm duration-300 hover:skew-y-1 cursor-pointer items-center"
     >
-      {{ hero.id }} - {{ hero.name }}
-    </li>
-  </ul>
-  <div class="mt-2">
+      <img
+        mat-card-avatar
+        class="w-24 rounded-l h-28 object-cover"
+        [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension"
+        alt=""
+      />
+      <p>{{ hero.id }}</p>
+      <p>{{ hero.name }}</p>
+    </mat-card-content>
+  </div>
+  <div class="flex flex-row mt-4 justify-center gap-x-2 items-center">
     <button
       class="bg-slate-950 text-slate-100 pt-1 pb-1 pl-2 pr-2 text-center rounded-full"
       (click)="goToPreviousPage()"

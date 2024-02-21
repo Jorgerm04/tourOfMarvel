@@ -1,17 +1,27 @@
-<div *ngIf="hero">
-  <button
-    class="bg-slate-950 text-slate-100 p-1 rounded"
-    type="button"
-    (click)="goBack()"
-  >
-    Return
-  </button>
-  <h2 class="text-3xl">{{ hero.name | uppercase }}</h2>
-  <div>id:{{ hero.id }}</div>
+<div
+  class="detalles flex flex-row items-center overflow-hidden mt-[5.3rem]"
+  *ngIf="hero"
+>
+  <div class="absolute flex flex-row items-center left-36 pr-32 pl-32 gap-x-10">
+    <div
+      class="flex flex-col text-gray-100 justify-start gap-y-6 relative z-10 mr-6"
+    >
+      <h2 class="text-8xl">{{ hero.name | uppercase }}</h2>
+      <p class="ml-1 text-xl">ID: {{ hero.id }}</p>
+      <p>{{ hero.description }}</p>
+    </div>
+
+    <img
+      mat-card-image
+      class="h-96 object-cover rounded-lg relative z-10 hover:scale-105 duration-500"
+      [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension"
+      alt=""
+    />
+  </div>
+
   <img
-    class="h-96 object-cover w-full rounded-lg"
+    class="w-screen object-cover h-[42rem] scale-110 brightness-50 relative z-0 blur-lg"
     [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension"
     alt=""
   />
-  <p>{{ hero.description }}</p>
 </div>

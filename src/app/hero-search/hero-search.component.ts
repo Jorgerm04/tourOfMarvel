@@ -20,6 +20,7 @@ export class HeroSearhComponent {
   heroes$?: Observable<Hero[]>;
   heroName:FormControl = new FormControl('')
   public selectedHero?:Hero;
+  public isInputFocused:boolean = false;
 
   constructor(private heroService: HeroService) {}
   
@@ -40,6 +41,16 @@ export class HeroSearhComponent {
 
   ngOnInit(): void {
     this.search()
+  }
+
+  public onFocus() {
+    this.isInputFocused = true;
+  }
+
+  public onBlur() {
+    setTimeout(() => {
+      this.isInputFocused = false;
+    }, 250);
   }
 
 }

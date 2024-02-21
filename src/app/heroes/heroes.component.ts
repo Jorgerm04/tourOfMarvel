@@ -4,11 +4,11 @@ import { Hero } from '../models/hero';
 import { HeroService } from '../services/hero.service';
 import { RouterLink } from '@angular/router';
 import { Observable, of } from 'rxjs';
-
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [NgFor,RouterLink, AsyncPipe],
+  imports: [NgFor,RouterLink, AsyncPipe,MatCardModule],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })

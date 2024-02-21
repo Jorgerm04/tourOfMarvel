@@ -1,14 +1,29 @@
-<div class="flex flex-col relative text-left items-center">
-  <mat-form-field class="example-full-width">
-    <mat-label>Hero Search</mat-label>
-    <input matInput [formControl]="heroName" [matAutocomplete]="auto" />
+<div class="flex flex-col relative text-left items-center mt-2">
+  <label for="search-box">Hero Search</label>
+  <div class="relative">
+    <input
+      class="w-48 text-sm outline-none bg-gray-100 pt-2 pl-2 pb-2 pr-6 z-20 border-red-600 focus:border-b-2 duration-75 focus:shadow-md shadow-slate-500 text-gray-950"
+      placeholder="Character name"
+      [formControl]="heroName"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+    <i
+      class="fa-solid fa-magnifying-glass absolute right-1 text-gray-100 top-[0.6rem]"
+    ></i>
+  </div>
 
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let hero of heroes$ | async">
-        <a routerLink="/detail/{{ hero.id }}">
-          {{ hero.name }}
-        </a>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <ul
+    *ngIf="isInputFocused"
+    class="search-result absolute z-10 top-[3.9rem] p-0 m-0 bg-gray-100 w-48 shadow-b-md shadow-slate-500 rounded-br rounded-bl cursor-pointer text-gray-950"
+  >
+    <li *ngFor="let hero of heroes$ | async" class="p-1">
+      <a
+        class="duration-75 border-red-600 hover:border-b-2"
+        routerLink="/detail/{{ hero.id }}"
+      >
+        {{ hero.name }}
+      </a>
+    </li>
+  </ul>
 </div>
